@@ -16,6 +16,25 @@
     margin-bottom: 2em !important;
 }
 
+.tile-icon {
+    margin: 0.2em auto !important;
+}
+
+.main-margin {
+    margin-top: 2em !important;
+}
+
+.hero {
+    background: url("../src/img/birds.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh; 
+    position: relative;
+    margin: -1em 0 0;
+    padding: 0 auto;
+}
+
 .title {
     font-size: 1.8em !important;
 }
@@ -27,6 +46,13 @@
 .page-container {
     max-width: 90vw;
     margin: 0 auto !important;
+}
+
+.imgimg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 
