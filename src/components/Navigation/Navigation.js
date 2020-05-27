@@ -10,8 +10,8 @@ export default function Navigation() {
   };
   return (
     <React.Fragment>
-      <Segment inverted >
-        <Menu inverted pointing secondary >
+      <Segment inverted>
+        <Menu inverted pointing secondary>
           <Menu.Item
             as={Link}
             to="/"
@@ -35,9 +35,6 @@ export default function Navigation() {
           />
         </Menu>
       </Segment>
-      {/* <Link to="/">Home</Link>
-      <Link to="/contact">Contact</Link>
-      <Link to="/users">Users</Link> */}
     </React.Fragment>
   );
 }
