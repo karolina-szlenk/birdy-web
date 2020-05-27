@@ -9,16 +9,15 @@ import "./App.css";
 
 function App() {
 
-
   return (
     <div className="App">
       <BrowserRouter>
         <Navigation />
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route exact path="/contact" component={Contact}></Route>
+          <Route path="/contact" component={Contact}></Route>
           <Route exact path="/users" component={Users}></Route>
-          <Route exact path="/users/:id" component={User}></Route>
+          <Route path="/users/:id" component={User}></Route>
         </Switch>
       </BrowserRouter>
     </div>

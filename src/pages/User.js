@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const User = ({ match }) => {
-
-  // const user = users.find((user) => user.id === match.params.id);
-
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    fetch(`https://reqres.in/api/users/${match.params.id}`)
+      .then((res) => res.json())
+      .then((res) => setUser(res.data));
+  }, [match.params.id]);
   return (
     <div>
-      {match.params.id}
+      <img src={user.avatar} alt="user_img" />
+      {user.first_name}
+      {user.last_name}
+      {user.email}
     </div>
   );
 };
