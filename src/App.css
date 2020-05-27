@@ -1,7 +1,54 @@
 .App {
     background-color: #e6e6e6;
-    height: 100vh;
-    text-align: center;
-    
+    min-height: 100vh;
+    text-align: center;  
 }
+
+.app-container {
+    padding-top: 1em;
+}
+
+.card-container {
+    width: 90vw;
+}
+
+.card-wrapper{
+    margin-bottom: 2em !important;
+}
+
+.title {
+    font-size: 1.8em !important;
+}
+
+.subtitle {
+    margin: .6em 0;
+}
+
+.page-container {
+    max-width: 90vw;
+    margin: 0 auto !important;
+}
+
+
+@media (min-width: 768px) {
+    .card-container {
+        min-width: 60vw;
+    }
+
+    .page-container{
+        max-width: 80vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-container {
+        min-width: 30vw;
+    }
+
+    .page-container{
+        max-width: 60vw;
+    }
+}
+
+
   

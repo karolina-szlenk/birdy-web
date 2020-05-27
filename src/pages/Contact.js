@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Form, TextArea, Modal, Button, Header } from "semantic-ui-react";
-import "./Contact.css"
+import { Card, Form, TextArea, Modal, Header } from "semantic-ui-react";
+import "../App.css"
 
 export default function Contact() {
   const [values, setValues] = useState({
@@ -9,7 +9,6 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-  const [isLoading, setIsLoading] = useState("false");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,13 +25,13 @@ export default function Contact() {
     values.email !== "" &&
     values.subject !== "" &&
     values.message !== "" ? (
-      <Form.Button content="Submit" />
+      <Form.Button content="Submit" color="blue"/>
     ) : (
-      <Form.Button content="Submit" disabled />
+      <Form.Button content="Submit" color="blue" disabled />
     );
 
   return (
-    <div>
+    <div className="app-container">
       <Card className="card-container" centered>
         <Card.Content>
           <Card.Header className="title">Contact Form</Card.Header>
