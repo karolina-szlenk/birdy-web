@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import User from "./pages/User";
+import Footer from "./components/Footer/Footer"
 
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/users" component={Users}></Route>
           <Route path="/users/:id" component={User}></Route>
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
