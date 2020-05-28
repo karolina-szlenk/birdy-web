@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Button, Image } from "semantic-ui-react";
+import { Card, Button, Image, Message } from "semantic-ui-react";
 import "../App.css";
 
 const User = ({ match }) => {
@@ -35,32 +35,49 @@ const User = ({ match }) => {
         "My thing are birds predators. The way how they evolve, to become ultimate killers is amazing.",
     },
   ];
+  const renderDescription = descriptions
+    .filter((item) => item.id === Number(match.params.id))
+    .map((item) => item.txt);
+
   const [user, setUser] = useState({});
+  const [isError, setError] = useState(false);
+
   useEffect(() => {
     fetch(`https://reqres.in/api/users/${match.params.id}`)
       .then((res) => res.json())
-      .then((res) => setUser(res.data));
+      .then((res) => setUser(res.data))
+      .catch(() => setError(true));
   }, [match.params.id]);
+
   return (
     <div className="app-container">
-      <Card className="card-container" centered>
-        <Card.Content>
-          <Image floated="right" size="tiny" src={user.avatar} />
-          <Card.Header className="title" textAlign="left">
-            {user.first_name} {user.last_name}
-          </Card.Header>
-          <Card.Meta textAlign="left">{user.email}</Card.Meta>
-          <Card.Description textAlign="left">
-            {descriptions
-              .filter((item) => item.id === Number(match.params.id))
-              .map((item) => item.txt)}
-          </Card.Description>
-        </Card.Content>
-
-        <Card.Content>
-          <Button as={Link} to="/users" content="Back to users" color="blue" />
-        </Card.Content>
-      </Card>
+      {isError ? (
+        <Message negative size="huge">
+          <Message.Header>Error 404</Message.Header>
+          <p>File not found!</p>
+        </Message>
+      ) : (
+        <Card className="card-container" centered>
+          <Card.Content>
+            <Image floated="right" size="tiny" src={user.avatar} />
+            <Card.Header className="title" textAlign="left">
+              {user.first_name} {user.last_name}
+            </Card.Header>
+            <Card.Meta textAlign="left">{user.email}</Card.Meta>
+            <Card.Description textAlign="left">
+              {renderDescription}
+            </Card.Description>
+          </Card.Content>
+          <Card.Content>
+            <Button
+              as={Link}
+              to="/users"
+              content="Back to users"
+              color="blue"
+            />
+          </Card.Content>
+        </Card>
+      )}
     </div>
   );
 };
