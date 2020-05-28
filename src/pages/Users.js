@@ -34,7 +34,6 @@ export default function Users() {
             {users.map((user) => (
               <Grid.Column
                 key={user.id}
-                centered
                 mobile={15}
                 tablet={7}
                 computer={5}

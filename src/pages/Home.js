@@ -26,7 +26,7 @@ export default function Home() {
         </Grid.Row>
 
         <Grid.Row className="main-margin">
-          <Grid.Column centered mobile={15} tablet={7} computer={5}>
+          <Grid.Column mobile={15} tablet={7} computer={5}>
             <Card className="card-wrapper" centered>
               <Icon
                 name="map marker alternate"
@@ -40,7 +40,7 @@ export default function Home() {
               </Card.Content>
             </Card>
           </Grid.Column>
-          <Grid.Column centered mobile={15} tablet={7} computer={5}>
+          <Grid.Column mobile={15} tablet={7} computer={5}>
             <Card className="card-wrapper" centered>
               <Icon name="share" size="huge" className="tile-icon"></Icon>
               <Card.Content>
@@ -50,7 +50,7 @@ export default function Home() {
               </Card.Content>
             </Card>
           </Grid.Column>
-          <Grid.Column centered mobile={15} tablet={7} computer={5}>
+          <Grid.Column mobile={15} tablet={7} computer={5}>
             <Card className="card-wrapper" centered>
               <Icon
                 name="calendar alternate outline"
