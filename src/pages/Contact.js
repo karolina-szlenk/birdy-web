@@ -6,6 +6,7 @@ import {
   Modal,
   Header,
   Message,
+  Button,
 } from "semantic-ui-react";
 import "../App.css";
 
@@ -17,23 +18,23 @@ export default function Contact() {
     message: "",
   });
   const [emailValidationMessage, setEmailValidationMessage] = useState(false);
-  const [emailSuccessMessage, setEmailSuccessMessage] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
-    let checkEmail = validateEmail(values.email);
-    if (checkEmail === false) {
-      setEmailValidationMessage(true);
-      setEmailSuccessMessage(false);
-    } else {
-      setEmailValidationMessage(false);
-      setEmailSuccessMessage(true);
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let checkEmail = validateEmail(values.email);
+    if (checkEmail === false) {
+      setEmailValidationMessage(true);
+      return false;
+    } else {
+      setEmailValidationMessage(false);
+      setOpen(true);
+    }
     setValues({ name: "", email: "", subject: "", message: "" });
   };
 
@@ -42,16 +43,9 @@ export default function Contact() {
     return reg.test(String(email).toLowerCase());
   };
 
-  const submitBtn =
-    values.name !== "" &&
-    values.email !== "" &&
-    validateEmail(values.email) !== false &&
-    values.subject !== "" &&
-    values.message !== "" ? (
-      <Form.Button content="Submit" color="blue" />
-    ) : (
-      <Form.Button content="Submit" color="blue" disabled />
-    );
+  const close = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="app-container">
@@ -75,6 +69,9 @@ export default function Contact() {
               onChange={handleChange}
               required
             />
+            {emailValidationMessage ? (
+              <Message negative>Invalid email address entered!</Message>
+            ) : null}
             <Form.Input
               placeholder="Subject"
               name="subject"
@@ -90,13 +87,10 @@ export default function Contact() {
               onChange={handleChange}
               required
             />
-            {emailValidationMessage ? (
-              <Message>Pamiętaj o prawidłowym adresie email!</Message>
-            ) : null}
-            {emailSuccessMessage ? (
-              <Message positive>Podany adres email jest prawidłowy!</Message>
-            ) : null}
-            <Modal trigger={submitBtn} closeIcon>
+            <Modal
+              open={open}
+              trigger={<Form.Button content="Submit" color="blue" />}
+            >
               <Header
                 icon="check circle outline"
                 content="Thank you for contacting us!"
@@ -107,6 +101,9 @@ export default function Contact() {
                   get back to you very soon!
                 </p>
               </Modal.Content>
+              <Modal.Actions>
+                <Button icon="close" color="blue" onClick={close} />
+              </Modal.Actions>
             </Modal>
           </Form>
         </Card.Content>
