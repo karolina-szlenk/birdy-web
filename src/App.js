@@ -8,6 +8,7 @@ import User from "./pages/User";
 import Footer from "./components/Footer/Footer"
 
 import "./App.css";
+import "./index.css";
 
 function App() {
 

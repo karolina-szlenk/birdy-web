@@ -24,7 +24,6 @@ export default function Home() {
             </Header.Content>
           </Header>
         </Grid.Row>
-
         <Grid.Row className="main-margin">
           <Grid.Column mobile={15} tablet={7} computer={5}>
             <Card className="card-wrapper" centered>

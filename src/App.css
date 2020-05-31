@@ -2,19 +2,34 @@
     background-color: #e6e6e6;
     min-height: 100vh;
     text-align: center;  
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .app-container {
     padding-top: 1em;
-    height: calc(100vh - 131px);
+    flex: 1 0 auto;
+    width: 100%;
 }
 
-.card-container {
-    width: 90vw;
+.app-container:after {
+    content: '\00a0';
+    display: block;
+    margin-top: 1em;
+    height: 0;
+    visibility: hidden;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
 }
 
 .card-wrapper{
     margin-bottom: 2em !important;
+    width: auto !important;
 }
 
 .tile-icon {
@@ -49,9 +64,15 @@
     margin: 0 auto !important;
 }
 
+@media (max-width: 767px) {
+    .card-container {
+        min-width: 90vw !important;
+    }
+}
+
 @media (min-width: 768px) {
     .card-container {
-        min-width: 60vw;
+        min-width: 60vw !important;
     }
 
     .page-container{
@@ -61,7 +82,7 @@
 
 @media (min-width: 1024px) {
     .card-container {
-        min-width: 30vw;
+        min-width: 30vw !important;
     }
 
     .page-container{
